@@ -1,0 +1,39 @@
+.wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 400px;
+}
+
+.button {
+    margin-right: 15px;
+    padding: 50px;
+    border: 1px solid black;
+    font-size: 20px;
+    cursor: pointer;
+    background-color: whitesmoke;
+}
+
+.off {
+    background-color: red;
+}
+
+.on {
+    background-color: green;
+}
+
+.circle {
+    display: inline-block;
+    width: 90px;
+    height: 90px;
+    border-radius: 80%;
+    border: 1px solid black;
+}
+
+.circleOn {
+    background-color: green;
+}
+
+.circleOff {
+    background-color: red;
+}
