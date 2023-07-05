@@ -7,7 +7,10 @@ type RatingPropsType = {
     onClick: (value: RatingValue) => void
 }
 
-export const Rating = ({value, onClick}: RatingPropsType) => {
+export const Rating = ({
+                           value,
+                           onClick
+}: RatingPropsType) => {
     return (
         <div>
             <Star selected={value > 0} onClick={onClick} value={1}/>
