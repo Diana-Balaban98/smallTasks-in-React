@@ -39,7 +39,9 @@ export const GetValueOfUncontrolledInputByButtonPress = () => {
     }
 
     return <>
-        <input ref={actualValue}/> <button onClick={onClickHandlerSave}>save</button> - actual value: {value}
+        <input ref={actualValue}/>
+        <button onClick={onClickHandlerSave}>save</button>
+        - actual value: {value}
         {/*value внешнего мира, внутри инпут мы не контролируем*/}
     </>
 }
@@ -47,3 +49,42 @@ export const GetValueOfUncontrolledInputByButtonPress = () => {
 // 4.
 // контролируемый инпут - строго задаем value, контролируем его значение, которое он внутри себя показывает
 export const СontrolledInputWithFixedValue = () => <input value={"it-incubator"}/>
+
+// 5.
+export const ControlledInput = () => {
+    const [parentValue, setParentValue] = useState("")
+
+    const onChange = (e: ChangeEvent<HTMLInputElement>) => {
+        setParentValue(e.currentTarget.value)
+    }
+
+    return <input value={parentValue} onChange={onChange}/>
+}
+
+// 6.
+export const ControlledCheckbox = () => {
+    const [checked, setChecked] = useState(false)
+
+    const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
+        setChecked(e.currentTarget.checked)
+    }
+
+    return <input type="checkbox" checked={checked} onChange={onChangeHandler}/>
+}
+
+// 7.
+// когда работаешь с селектом, нужно думать про изменения значения самого селекта
+export const ControlledSelect = () => {
+    const [parentValue, setParentValue] = useState<string | undefined>(undefined)
+
+    const onChangeHandler = (e: ChangeEvent<HTMLSelectElement>) => {
+        setParentValue(e.currentTarget.value)
+    }
+
+    return <select value={parentValue} onChange={onChangeHandler}>
+        <option>none</option>
+        <option value="1">Minsk</option>
+        <option value="2">Moscow</option>
+        <option value="3">Kiev</option>
+    </select>
+}
