@@ -15,8 +15,7 @@ let [isOn, setIsOn] = useState<boolean>(false)
         <div>
             {/*<Rating value={ratingValue} onClick={setRatingValue}/>*/}
             {/*<UncontrolledRating />*/}
-            <Accordion title={"Menu"} collapsed={isCollapsed} setIsCollapsed={setIsCollapsed}/>
-            <OnOff setIsOn={setIsOn} isOn={isOn}/>
+            {/*<Accordion title="Menu" collapsed={isCollapsed} setIsCollapsed={setIsCollapsed}/>*/}
             <OnOff setIsOn={setIsOn} isOn={isOn}/>
             <UnControlledOnOff/>
         </div>
