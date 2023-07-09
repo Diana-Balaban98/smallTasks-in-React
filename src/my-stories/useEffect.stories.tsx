@@ -5,7 +5,6 @@ export default {
 }
 
 
-
 export const SimpleExample = () => {
 
     const [counter, setCounter] = useState(1)
@@ -42,3 +41,51 @@ export const SimpleExample = () => {
     );
 };
 
+
+export const SetTimeoutExample = () => {
+
+    const [counter, setCounter] = useState(1)
+    console.log("SetTimeoutExample")
+
+
+    const onClickHandler = () => {
+        setCounter(counter + 1)
+    }
+
+    useEffect(() => {
+        // асинхронные операции и запросы на сервер делать внутри useEffect
+        setTimeout(() => {
+            console.log("SETTIMEOUT")
+            document.title = counter.toString()
+        }, 1000)
+    }, [counter])
+
+
+    return (
+        <div>
+            {counter}
+            <button onClick={onClickHandler}>+</button>
+        </div>
+    );
+};
+
+export const SetIntervalExample = () => {
+
+    const [counter, setCounter] = useState(1)
+    console.log("SetTimeoutExample")
+
+    useEffect(() => {
+        // асинхронные операции и запросы на сервер делать внутри useEffect
+        setInterval(() => {
+            console.log("SETINTERVAL!!!")
+            setCounter(prev => prev + 1)
+        }, 2000)
+    }, [])
+
+
+    return (
+        <div>
+            Hello, counter: {counter}
+        </div>
+    );
+};
