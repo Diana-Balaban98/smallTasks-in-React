@@ -50,7 +50,6 @@ export const Example1 = (props: { users: Array<string> }) => {
 };
 
 
-
 const UsersSecret = (props: { users: Array<string> }) => {
     console.log("UsersSecret")
 
@@ -89,4 +88,37 @@ export const HelpsToReactMemo = () => {
     </>
 };
 
+export const LikeUseMemo = () => {
+    console.log("LikeUseMemo")
+    const [counter, setCounter] = useState(0)
+    const [books, setBooks] = useState(["React", "Js", "CSS", "HTML"])
 
+    const memoizedAddBook = useMemo(() => {
+        return () => {
+            console.log(books)
+            const newBooks = [...books, "Angular"];
+            setBooks(newBooks)
+        }
+    }, [books])
+
+    const onClickHandler = () => {
+        setCounter(counter + 1)
+    }
+
+    return <>
+        <button onClick={onClickHandler}>+</button>
+        {counter}
+        <Books books={books} addBook={memoizedAddBook}/>
+    </>
+};
+
+const BooksSecret = (props: { books: Array<string>, addBook: () => void}) => {
+    console.log("BooksSecret")
+
+    return <div>
+        <button onClick={props.addBook}>Add book</button>
+        {props.books.map((book, i) => <div key={i}>{book}</div>)}
+    </div>
+}
+
+const Books = React.memo(BooksSecret)
